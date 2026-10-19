@@ -1,8 +1,7 @@
 .main {
   min-height: 100vh;
-  background: #05060a;
   color: white;
-  padding: 80px 24px 40px;
+  padding: 56px 24px 40px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   display: flex;
   flex-direction: column;
@@ -44,4 +43,14 @@
 
 .actions {
   margin-top: auto;
+}
+
+.back {
+  display: block;
+  color: white;
+  font-size: 32px;
+  line-height: 1;
+  text-decoration: none;
+  width: fit-content;
+  margin-bottom: 64px;
 }
