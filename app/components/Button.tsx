@@ -6,14 +6,15 @@ type ButtonProps = {
   children: ReactNode;
   variant?: "primary" | "secondary";
   href?: string;
+  transitionTypes?: string[];
 };
 
-export default function Button({ children, variant = "primary", href }: ButtonProps) {
+export default function Button({ children, variant = "primary", href, transitionTypes }: ButtonProps) {
   const className = `${styles.button} ${styles[variant]}`;
 
   if (href) {
     return (
-      <Link href={href} className={className}>
+      <Link href={href} transitionTypes={transitionTypes} className={className}>
         {children}
       </Link>
     );

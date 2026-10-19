@@ -11,7 +11,7 @@
   border-radius: 50%;
   filter: blur(60px);
   opacity: 0.7;
-  animation: drift 14s ease-in-out infinite alternate;
+  animation: drift-a 9s ease-in-out infinite alternate;
 }
 
 .pink {
@@ -28,7 +28,8 @@
   background: #3b5bff;
   top: 20%;
   right: -110px;
-  animation-delay: -4s;
+  animation-name: drift-b;
+  animation-duration: 11s;
 }
 
 .amber {
@@ -38,7 +39,8 @@
   bottom: 18%;
   left: 15%;
   opacity: 0.5;
-  animation-delay: -8s;
+  animation-name: drift-c;
+  animation-duration: 10s;
 }
 
 .purple {
@@ -48,7 +50,9 @@
   top: 50%;
   right: 15%;
   opacity: 0.5;
-  animation-delay: -2s;
+  animation-name: drift-b;
+  animation-duration: 8s;
+  animation-direction: alternate-reverse;
 }
 
 .veil {
@@ -57,8 +61,35 @@
   background: linear-gradient(to bottom, transparent 45%, #05060a 85%);
 }
 
-@keyframes drift {
+@keyframes drift-a {
+  50% {
+    transform: translate(70px, -50px) scale(1.2);
+  }
   to {
-    transform: translate(30px, -40px) scale(1.15);
+    transform: translate(30px, -100px) scale(0.95);
+  }
+}
+
+@keyframes drift-b {
+  50% {
+    transform: translate(-80px, 60px) scale(1.15);
+  }
+  to {
+    transform: translate(-30px, 110px) scale(1.25);
+  }
+}
+
+@keyframes drift-c {
+  50% {
+    transform: translate(60px, 40px) scale(0.9);
+  }
+  to {
+    transform: translate(100px, -40px) scale(1.2);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .light {
+    animation: none;
   }
 }

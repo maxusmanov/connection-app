@@ -1,28 +1,18 @@
 .main {
   min-height: 100vh;
   color: white;
-  padding: 120px 24px 40px;
+  padding: 56px 24px 40px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   display: flex;
   flex-direction: column;
 }
 
-.title {
-  font-size: 64px;
-  font-weight: 350;
-  line-height: 1;
-  margin: 0;
-}
-
-.subtitle {
-  margin-top: 20px;
-  font-size: 18px;
-  opacity: 0.7;
-}
-
-.actions {
-  margin-top: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+/* hidden on screen (the title is drawn around the disc) but still read by screen readers */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }

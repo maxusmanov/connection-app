@@ -1,17 +1,14 @@
-import Button from "./components/Button";
 import styles from "./page.module.css";
-import Bokeh from "./components/Bokeh";
+import PageTransition from "./components/PageTransition";
+import Intro from "./components/Intro";
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <Bokeh />
-      <h1 className={styles.title}>for the record</h1>
-      <p className={styles.subtitle}>rate what you’re listening to.</p>
-      <div className={styles.actions}>
-        <Button href="/signup">sign up</Button>
-        <Button variant="secondary" href="/login">log in</Button>
-      </div>
-    </main>
+    <PageTransition>
+      <main className={styles.main}>
+        <h1 className={styles.srOnly}>for the record</h1>
+        <Intro />
+      </main>
+    </PageTransition>
   );
 }
