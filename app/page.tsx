@@ -8,7 +8,7 @@ export default function Home() {
       <p className={styles.subtitle}>rate what you’re listening to.</p>
         <div className={styles.actions}>
         <Button>sign up</Button>
-        <Button variant="secondary">log in</Button>
+        <Button variant="secondary" href="/login">log in</Button>
       </div>
     </main>
   );

@@ -5,6 +5,10 @@
   font-size: 18px;
   font-family: inherit;
   cursor: pointer;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  box-sizing: border-box;
 }
 
 .primary {
