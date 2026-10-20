@@ -7,9 +7,10 @@ type ButtonProps = {
   variant?: "primary" | "secondary";
   href?: string;
   transitionTypes?: string[];
+  disabled?: boolean;
 };
 
-export default function Button({ children, variant = "primary", href, transitionTypes }: ButtonProps) {
+export default function Button({ children, variant = "primary", href, transitionTypes, disabled }: ButtonProps) {
   const className = `${styles.button} ${styles[variant]}`;
 
   if (href) {
@@ -20,5 +21,5 @@ export default function Button({ children, variant = "primary", href, transition
     );
   }
 
-  return <button className={className}>{children}</button>;
+  return <button className={className} disabled={disabled}>{children}</button>;
 }

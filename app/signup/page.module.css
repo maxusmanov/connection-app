@@ -47,3 +47,14 @@
   width: fit-content;
   margin-bottom: 64px;
 }
+.error {
+  margin: 4px 20px 0;
+  color: #ff6b6b;
+  font-size: 14px;
+}
+
+.message {
+  margin: 4px 20px 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+}
