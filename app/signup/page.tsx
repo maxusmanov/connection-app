@@ -18,6 +18,7 @@ export default function Signup() {
 
         <div className={styles.form}>
           <input className={styles.input} name="name" type="text" placeholder="name" autoComplete="name" required />
+          <input className={styles.input} name="username" type="text" placeholder="username" autoComplete="username" autoCapitalize="none" autoCorrect="off" spellCheck={false} pattern="@?[A-Za-z0-9_]{3,20}" title="3–20 letters, numbers or _" required />
           <input className={styles.input} name="email" type="email" placeholder="email" autoComplete="email" required />
           <input className={styles.input} name="password" type="password" placeholder="password" autoComplete="new-password" minLength={6} required />
           {state.error && <p className={styles.error} role="alert">{state.error}</p>}

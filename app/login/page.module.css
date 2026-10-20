@@ -60,3 +60,9 @@
   color: #ff6b6b;
   font-size: 14px;
 }
+
+.username {
+  margin: -32px 0 40px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 16px;
+}

@@ -24,6 +24,16 @@ async function Greeting() {
   const { data } = await supabase.auth.getClaims();
   if (!data?.claims) redirect("/login");
 
-  const name = data.claims.user_metadata?.display_name ?? data.claims.email;
-  return <h1 className={styles.title}>hi, {name}</h1>;
+  const { data: profile } = await supabase
+    .from("profiles")
+    .select("username, display_name")
+    .eq("id", data.claims.sub)
+    .single();
+
+  return (
+    <>
+      <h1 className={styles.title}>hi, {profile?.display_name ?? data.claims.email}</h1>
+      {profile && <p className={styles.username}>@{profile.username}</p>}
+    </>
+  );
 }
