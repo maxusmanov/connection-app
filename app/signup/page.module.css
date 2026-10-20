@@ -48,13 +48,15 @@
   margin-bottom: 64px;
 }
 .error {
-  margin: 4px 20px 0;
+  margin: 8px 0 0;
+  text-align: center;
   color: #ff6b6b;
   font-size: 14px;
 }
 
 .message {
-  margin: 4px 20px 0;
+  margin: 8px 0 0;
+  text-align: center;
   color: rgba(255, 255, 255, 0.7);
   font-size: 14px;
 }
