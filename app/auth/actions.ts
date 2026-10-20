@@ -1,5 +1,6 @@
 "use server";
 
+import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 
@@ -23,11 +24,16 @@ export async function signup(_prev: AuthState, formData: FormData): Promise<Auth
   const password = String(formData.get("password") ?? "");
   if (!name || !email || !password) return { error: "fill in all fields" };
 
+  const origin = (await headers()).get("origin");
   const supabase = await createClient();
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
-    options: { data: { display_name: name } },
+    options: {
+      data: { display_name: name },
+      // Where the link in the confirmation email sends them.
+      emailRedirectTo: `${origin}/auth/confirm`,
+    },
   });
   if (error) return { error: error.message.toLowerCase() };
 
