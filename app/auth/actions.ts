@@ -48,14 +48,31 @@ export async function signup(_prev: AuthState, formData: FormData): Promise<Auth
       emailRedirectTo: `${origin}/auth/confirm`,
     },
   });
-  // Saving the profile fails if someone grabbed the username a moment ago.
-  if (error?.message.includes("Database error")) return { error: "that username is taken" };
-  if (error) return { error: error.message.toLowerCase() };
+  if (error) {
+    // Saving the profile fails if someone grabbed the username a moment ago.
+    if (error.message.includes("Database error")) return { error: "that username is taken" };
+    if (error.code === "over_email_send_rate_limit") {
+      return { error: "too many sign ups right now, try again in a bit" };
+    }
+    if (error.code === "user_already_exists" || error.code === "email_exists") {
+      return { error: "that email is already registered, try logging in" };
+    }
+    return { error: error.message.toLowerCase() };
+  }
 
-  // If email confirmation is on in Supabase, there's no session until they confirm.
-  if (!data.session) return { message: "check your email to confirm your account" };
+  // With email confirmation on, Supabase hides whether an email is already
+  // registered: it returns a placeholder user with no identities and sends nothing.
+  if (data.user && data.user.identities?.length === 0) {
+    return { error: "that email is already registered, try logging in" };
+  }
 
-  redirect("/home");
+  // Signed up and logged in straight away (email confirmation is off).
+  if (data.session) redirect("/home");
+
+  // Account created, but they're not logged in until they click the email link.
+  if (data.user) return { message: "check your email to confirm your account" };
+
+  return { error: "something went wrong, please try again" };
 }
 
 export async function logout() {
